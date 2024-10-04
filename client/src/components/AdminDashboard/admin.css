@@ -1,0 +1,12 @@
+.ant-layout-sider .ant-layout-sider-children{
+    background: #fff !important;
+}
+
+.header-menu{
+    height: 64px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
