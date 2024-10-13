@@ -10,12 +10,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 import categoryReducer from '../slice/category'
 import productReducer from '../slice/product'
+import authReducer from '../slice/auth'
+
+
 const rootReducer= combineReducers({
     categories: categoryReducer,
-    products : productReducer
+    products : productReducer,
+    auth: authReducer,
 });
 
 const persistConfig = {

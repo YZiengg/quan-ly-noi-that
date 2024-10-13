@@ -4,9 +4,11 @@ const categorySlice = createSlice({
     name:'product',
     initialState:{
         products:[],
+        productDetail: null,
         success: false,
         isfetching:false,
-        error: false
+        error: false,
+        msg: ""
     },
 
     reducers:{
@@ -19,6 +21,14 @@ const categorySlice = createSlice({
         getProductsSuccess:(state,action)=>{
             state.isfetching = false
             state.products = action.payload
+        },
+        deleteProductSuccess:(state,action) =>{
+            state.success = true
+            state.msg = action.payload
+        },
+
+        getproductDetailSuccess:(state,action)=>{
+            state.productDetail= action.payload
         }
         
     }
@@ -26,7 +36,9 @@ const categorySlice = createSlice({
 
 export const{
     createProductSuccess,
-    getProductsSuccess
+    getProductsSuccess,
+    deleteProductSuccess,
+    getproductDetailSuccess
 } = categorySlice.actions
 
 export default categorySlice.reducer

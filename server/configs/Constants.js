@@ -1,5 +1,8 @@
+import {v4 as uuidv4} from "uuid"
 const API_PATH = {
     //authentication
+    SENT_OTP:"/otp/sent-otp",
+    CHECK_OTP:"/otp/check-otp",
     REG_ACC: "/auth/reg",
     LOGIN: "/auth/login",
     //category
@@ -8,8 +11,10 @@ const API_PATH = {
     DELETE_CAT:"/cat/:categoryId",
     //product
     GET_PROD:"/prod/get",
+    GET_PROD_CAT_ID:"/prod/:categoryId",
     CREATE_PROD:"/prod/create",
-    DELETE_PROD:"/prod/:productId",
+    DELETE_PROD:"/prod/:categoryId/:productId",
+    GET_PROD_DETAIL:"/prod-detail/:productId",
     //shopping cart
     GET_SHOPPINGCART:"/shopping/",
     ADD_TO_SHOPPINGCART:"/shopping/add",
@@ -35,6 +40,7 @@ const STATUS = {
 };
 
 const DB_SCHEMA = {
+    OTP: 'Otp',
     ACCOUNT: 'Account',
     USER: 'User',
     BRAND:'Brand',
@@ -44,4 +50,8 @@ const DB_SCHEMA = {
     ORDER: 'Order'
 };
 
-export  { API_PATH, STATUS, DB_SCHEMA };
+
+const createRandomID = ()=>{
+    return uuidv4();
+}
+export  { API_PATH, STATUS, DB_SCHEMA , createRandomID};

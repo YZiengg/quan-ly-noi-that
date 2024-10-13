@@ -9,15 +9,15 @@ const { Meta } = Card;
 function AdminCategory() {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.categories);
-  const navigate = useNavigate(); // Khai báo useNavigate để điều hướng
-
+  const navigate = useNavigate(); 
+  
   useEffect(() => {
     getCategories(dispatch);
   },[dispatch]);
 
   // Hàm xử lý khi nhấn vào Card
   const handleCardClick = (categoryId) => {
-    navigate(`/admin/product/${categoryId}`);
+    navigate(`/admin/products/${categoryId}`);
   };
 
   return (

@@ -1,0 +1,116 @@
+.customer-product-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.product-slider {
+    margin: 20px 5% 20px 5% ;
+
+}
+
+.product-slider img {
+    width: 100%;
+    height: auto;
+}
+
+/* Customizing the slider dots */
+.slick-dots li button:before {
+    font-size: 12px;
+    color: #b6b6b6;
+    margin-bottom: 10px
+}
+
+.slick-dots li.slick-active button:before {
+    color: #b6b6b6;
+}
+
+
+
+
+.category-product{
+    width: 100%;
+    background: #f9f9f9;
+    height: 1000px;
+    padding-top: 30px;
+    margin-top: 35px;
+}
+
+.product-title {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.product-title span {
+    font-size: 20px;
+    text-transform: inherit;
+    font-weight: 600;
+    background-color: #5d5c5c;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.product-title::before,
+.product-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background-color: #5d5c5c;
+}
+
+.product-title::before{
+    margin-left: 10%;
+}
+
+.product-title::after{
+    margin-right: 10%;
+}
+
+
+/* Styling for product items */
+.customer-product {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.item {
+    background: #fff;
+    padding: 20px;
+    width: 26%;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.item-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 1s ease; /* Hiệu ứng chuyển động mượt mà */
+}
+
+.item-image:hover img {
+    transform: scale(1.1); /* Phóng to ảnh khi hover */
+}
+.item-info {
+    margin-top: 15px;
+}
+
+.item-name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.item-price {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}

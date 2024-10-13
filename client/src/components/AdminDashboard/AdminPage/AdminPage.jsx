@@ -36,11 +36,10 @@ const AdminHome = () => {
   const breadcrumbItems = [<Breadcrumb.Item key="home">Trang chủ</Breadcrumb.Item>].concat(extraBreadcrumbItems);
 
   // Hàm mở Drawer và hiển thị component cụ thể
-  const showDrawer = (component) => {
-    setCurrentComponent(component); // Cập nhật component hiện tại
+  const showDrawer = (component, categoryId) => {
+    setCurrentComponent(React.cloneElement(component, { categoryId })); 
     setVisible(true);
   };
-
   // Hàm đóng Drawer
   const onClose = () => {
     setVisible(false);
@@ -66,7 +65,7 @@ const AdminHome = () => {
               title="Nhập Thông Tin"
               placement="right"
               onClose={onClose}
-              visible={visible}
+              open={visible}
             >
               {currentComponent} {/* Hiển thị component hiện tại */}
             </Drawer>
@@ -75,9 +74,9 @@ const AdminHome = () => {
               <Route path="home" element={<div>Trang chủ Admin</div>} />
               <Route path="category" element={<AdminCategory />} />
               <Route
-                path="product/:categoryId"
+                path="products/:categoryId"
                 element={
-                  <AdminProduct onCreateProductClick={() => showDrawer(<CreateProduct/>)} />
+                  <AdminProduct onCreateProductClick={(categoryId) => showDrawer(<CreateProduct />, categoryId)} />
                 }
               />
             </Routes>

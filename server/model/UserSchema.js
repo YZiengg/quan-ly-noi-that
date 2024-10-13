@@ -11,22 +11,15 @@ const UserSchema = new Schema({
         type: String,
         enum: {
             values: ['staff', 'admin', 'customer'],
-            message: 'Role {VALUE} is not supported'
+            message: 'Role {VALUE} is not supported',
         },
+        default: 'customer',
         required: true,
     },
     id: {
         type: String,
         required: true,
         unique: true,
-    },
-    gender: {
-        type: String,
-        enum: {
-            values: ['male', 'female'],
-            message: 'Gender {VALUE} is not supported'
-        },
-        required: true,
     },
     phonenumber: {
         type: String,

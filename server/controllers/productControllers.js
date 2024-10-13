@@ -6,7 +6,7 @@ const ObjectId = mongoose.Types.ObjectId;
 const createProduct = async (req, res) => {
     const {
         product_id, product_name, productType, description, brand,
-        price, quantity
+        price, quantity,images
     } = req.body;
 
     try {
@@ -23,7 +23,7 @@ const createProduct = async (req, res) => {
             brand,
             price,
             quantity,
-            // images
+            images
         });
         
         await newProduct.save();
@@ -53,11 +53,45 @@ const getProduct = async(req,res)=>{
     }
 }
 
-const deleteProduct = async(req,res) =>{
-    const {productId} = req.params
+const getProductByCategory = async(req,res) =>{
+    const {categoryId} = req.params;
     try {
+        const products = await DB_Connection.Category.findOne({category_id:categoryId}).populate('products');
+        res.status(STATUS.OK).json(products);
+        
+    } catch (error) {
+        res.status(STATUS.SERVER_ERROR).json({ 
+            message: error.name,
+            error: error.message 
+        });
+    }
+}
+
+const getProductDetail = async (req,res) =>{
+    const {productId} = req.params;
+    try {
+        const product = await DB_Connection.Product.findOne({product_id:productId});
+        if (!product) {
+            return res.status(STATUS.NOT_FOUND).json({ message: "Product not found" });
+        }
+        res.status(STATUS.OK).json(product);
+    } catch (error) {
+        res.status(STATUS.SERVER_ERROR).json({ 
+            message: error.name,
+            error: error.message 
+        });
+    }
+}
+
+const deleteProduct = async(req,res) =>{
+    const {productId, categoryId} = req.params
+    try {
+        const categoryUpdate =  await DB_Connection.Category.findByIdAndUpdate(categoryId,
+            {$pull:{products: new ObjectId(productId)}}
+        );
         await DB_Connection.Product.findByIdAndDelete(productId);
-        res.status(STATUS.OK).json({message:' xóa sản phẩm thành công!!!'});
+        await categoryUpdate.save();
+        res.status(STATUS.OK).json({message:' Xóa sản phẩm thành công!!!'});
     } catch (error) {
         res.status(STATUS.SERVER_ERROR).json({ 
             message: error.name,
@@ -84,4 +118,4 @@ const findProductById = async(req,res,next)=> {
     }
 
 }
-export{createProduct, getProduct, deleteProduct, findProductById}
+export{createProduct, getProduct, deleteProduct, findProductById , getProductByCategory, getProductDetail}

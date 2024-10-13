@@ -12,7 +12,7 @@ const OrderSchema = new Schema({
         }
     ],
     totalBill: { type: Number, required: false }, // Tổng số tiền của đơn hàng
-    status: { type: String, enum:{values:['pendding' , 'shipped', 'delevered']}, default: 'pending' }, // Trạng thái đơn hàng (pending, shipped, delivered)
+    status: { type: String, enum:{values:['pendding' , 'shipped', 'delevered']}, default: 'pendding' }, // Trạng thái đơn hàng (pending, shipped, delivered)
     shippingAddress: { type: String, required: false }, // Địa chỉ giao hàng
     createdAt: { type: Date, default: Date.now }, // Ngày tạo đơn hàng
 }, { timestamps: true });

@@ -33,11 +33,13 @@ const ProductSchema = new Schema({
         required:true
     },
     productType: { type: String, required: true }, 
-    // images: [
-    //     {
-    //         url: { type: String, required: true }, // URL của ảnh
-    //     }
-    // ],
+    images: [
+        {
+            url: { type: String, required: true }, // URL của ảnh
+        }
+    ],
+    
+    
 },{ timestamps: true });
 
 const Product = mongoose.model(DB_SCHEMA.PRODUCT, ProductSchema);
