@@ -3,7 +3,7 @@ import 'antd/dist/reset.css'; // Import CSS của Ant Design
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AdminHome from './components/AdminDashboard/AdminPage/AdminPage';
 import CustomerPage from './components/CustomerDashboard/CustomerPage';
-
+//
 function App() {
   return (
     <Router>
