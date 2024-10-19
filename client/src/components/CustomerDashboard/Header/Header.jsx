@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { Search, ShoppingCart, LogOut } from 'lucide-react';
 import './header.css';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../../redux/slice/auth';
 
 const Header = () => {
+    const dispatch = useDispatch()
     const initialAccount = useSelector((state)=> state.auth?.account);
     const initialuser = initialAccount?.user;
    
@@ -13,6 +15,8 @@ const Header = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        dispatch(logoutUser())
+        navigate('/')
     };
 
     const handleSearch = (e) => {
@@ -43,7 +47,7 @@ const Header = () => {
 
             <div className='header-content'>
                 <div className='logo'>
-                    <img src="/images/logo-01-01-1024x355.png" alt="logo" />
+                    {/* <img src="/images/logo-01-01-1024x355.png" alt="logo" /> */}
                 </div>
                 <nav className='nav'>
                     <ul>

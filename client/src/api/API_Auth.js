@@ -6,7 +6,7 @@ export const loginUser = async(dispatch,navigate,loginData)=>{
     try {
         const res = await axios.post(`/auth/login`,loginData);
         dispatch(loginSuccess(res.data));
-        navigate(`/`)
+        navigate(`/admin`)
         return {success:true}
     } catch (error) {
         return { success: false, error: error.message };   

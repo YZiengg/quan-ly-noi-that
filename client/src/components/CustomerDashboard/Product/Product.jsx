@@ -47,13 +47,13 @@ const Product = () => {
     return (
         <div className="customer-product-container">
             <div className="product-slider">
-                <Slider {...settings}>
+                {/* <Slider {...settings}>
                     {slider.images.map((image, index) => (
                         <div key={index}>
-                            <img src={image} alt={`Sản phẩm ${index + 1}`} /> {/* Đã đơn giản hóa alt text */}
+                            <img src={image} alt={`Sản phẩm ${index + 1}`} />
                         </div>
                     ))}
-                </Slider>
+                </Slider> */}
             </div>
             
             <div className="category-product">
@@ -62,7 +62,7 @@ const Product = () => {
                 </div>
                 <div className="customer-product">
                     {initialProducts?.map((product) => (
-                        <div className="item" key={product?.id} onClick={() => handleOnClick(product.product_id)} >
+                        <div className="item" key={product._id} onClick={() => handleOnClick(product.product_id)} >
                             <div className="item-image">
                             <img alt={product.product_id} src={`${product?.images[0]?.url}`} />
                             </div>

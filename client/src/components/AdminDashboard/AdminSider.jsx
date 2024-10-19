@@ -12,6 +12,8 @@ import {
   FormOutlined,
 } from '@ant-design/icons';
 import { Menu, Layout } from 'antd';
+import {useDispatch}  from 'react-redux'
+import { logoutUser } from '../../redux/slice/auth';
 
 const { Sider } = Layout;
 
@@ -85,6 +87,7 @@ const items = [
 ];
 
 const AdminSider = ({ onCreateCategoryClick }) => { // Nhận hàm từ props
+  const dispatch = useDispatch()
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   
@@ -93,6 +96,8 @@ const AdminSider = ({ onCreateCategoryClick }) => { // Nhận hàm từ props
       onCreateCategoryClick(); // Mở Drawer
     } else if (e.key === '/admin/logout') {
       // handleLogout(); // Thêm hàm xử lý đăng xuất nếu cần
+      dispatch(logoutUser())
+      navigate('/')
     } else {
       navigate(e.key);
     }
